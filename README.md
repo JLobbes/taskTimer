@@ -11,7 +11,9 @@ Install & Run:
     ...
 
 Instructions:
-    ...
+    User interface self exlpantory. 
+        1. Use buttons to scroll through recent tasks.
+        2. Select recent task.
 
 Credits:
     So far... Just me.
