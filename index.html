@@ -7,6 +7,11 @@
 
     <title>taskTracker</title>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous">
+    </script>
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,13 +24,29 @@
             </div>
 
             <div id="option_selector">
-                <div class="arrow left">
+                <div class="toggle-left-arrow no-select">
                     <img src="images/left_arrow.gif" alt="">
                 </div>
-                <div class="option-other left"></div>
-                <div class="option-main"></div>
-                <div class="option-other right"></div>
-                <div class="arrow right">
+
+                <div id="options">
+                    <div class="hidden-left">
+                        <p></p>
+                    </div>
+                    <div class="option-left">
+                        <p></p>
+                    </div>
+                    <div class="option-main">
+                        <p></p>
+                    </div>
+                    <div class="option-right">
+                        <p></p>
+                    </div>
+                    <div class="hidden-right">
+                        <p></p>
+                    </div>
+                </div>
+                
+                <div class="toggle-right-arrow no-select">
                     <img src="images/right_arrow.gif" alt="">
                 </div>
             </div>
@@ -37,4 +58,5 @@
         <a href="mailto:jlobbes2@emich.edu">jlobbes2@emich.edu</a>
     </footer>
 </body>
+<script src="index.js"></script>
 </html>

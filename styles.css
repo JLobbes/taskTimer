@@ -1,3 +1,5 @@
+/* Basics */
+
 body {
     background-color: rgb(117, 190, 100);
     margin: 0 0 0 0;
@@ -32,57 +34,107 @@ main {
     margin-top: 1em;
 }
 
-.arrow {
+.toggle-left-arrow {
     background-color: rgb(173, 210, 124);
+    border-radius: 0.5em 0 0 0.5em;
     height: 4em;
     margin: 0 0.25em 0 0.25em;
     width: 4em;
 }
 
-.arrow img {
+.toggle-right-arrow {
+    background-color: rgb(173, 210, 124);
+    border-radius: 0 0.5em 0.5em 0;
+    height: 4em;
+    margin: 0 0.25em 0 0.25em;
+    width: 4em;
+}
+
+.toggle-right-arrow:hover, .toggle-left-arrow:hover {
+    background-color: rgb(174, 198, 119);
+}
+
+img {
     display: block;
     height: 80%;
     margin: 5px auto auto auto;
 }
 
-.arrow:hover {
-    background-color: rgb(174, 198, 119);
+/* Options Element */
+#options {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 5em;
+    min-width: 40em;
+    text-shadow: 0.0em 0.0em 0.5em black;
 }
 
-.option-other {
+#options p {
+    color: antiquewhite;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 2em;
+    text-align: center;
+    vertical-align: center;
+}
+
+.center-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden-left {
+    display: none;
+}
+
+.hidden-right {
+    display: none;
+}
+
+.option-left {
     background-color: rgb(81, 150, 66);
+    border-radius: 0.5em 0 0 0.5em;
+    box-shadow: 0 0 0.25em black;
     height: 4em;
     width: 12em;
 }
 
-.option-other:hover {
+.option-right {
+    background-color: rgb(81, 150, 66);
+    border-radius: 0 0.5em 0.5em 0;
+    box-shadow: 0 0 0.25em black;
+    height: 4em;
+    width: 12em;
+}
+
+.option-left:hover, .option-right:hover {
     background-color: rgb(101, 155, 89);
 }
 
 .option-main {
     background-color: rgb(77, 127, 66);
     border-radius: 0.5em;
+    box-shadow: 0 0 0.25em black;
     height: 5em;
     width: 16em;
+    z-index: 2;
 }
 
 .option-main:hover {
     background-color: rgb(101, 155, 89);
 }
 
-.left {
-    border-radius: 0.5em 0 0 0.5em;
-}
 
-.right {
-    border-radius: 0 0.5em 0.5em 0;
+.no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
-
-#selector {
-    display: grid;
-    grid-template-columns: repeat(5, fr);
-}
-
 
 footer {
     background-color: rgb(81, 150, 66);
@@ -103,4 +155,212 @@ footer a {
 
 footer a:hover {
     color:rgb(204, 231, 141)
+}
+
+/* Animation toggle-right */
+
+.grow-from-left {
+    display: flex;
+    animation-name: grow-from-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes grow-from-left {
+    0% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 4em;
+        width: 12em;
+    }
+}
+
+.occupy-middle {
+    animation-name: occupy-middle;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes occupy-middle {
+    0% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        height: 4em;
+        width: 12em;
+        z-index: 1;
+    }
+    
+    100% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        height: 5em;
+        width: 16em;
+        z-index: 2;
+    }
+}
+
+.occupy-right {
+    animation-name: occupy-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-right {
+    0% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        height: 5em;
+        width: 16em;
+        z-index: 2;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0 0.5em 0.5em 0;
+        height: 4em;
+        width: 12em;
+        z-index: 1;
+    }
+}
+
+.shrink-to-right {
+    animation-name: shrink-to-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink-to-right {
+    0% {
+        background-color: rgb(81, 150, 66);
+        height: 4em;
+        width: 12em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0.25em;
+        height: 0em;
+        width: 0em;
+    }
+}
+
+/* Animation Toggle Left */
+
+.grow-from-right {
+    display: flex;
+    animation-name: grow-from-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes grow-from-right {
+    0% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 4em;
+        width: 12em;
+    }
+}
+
+.occupy-middle {
+    animation-name: occupy-middle;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes occupy-middle {
+    0% {
+        background-color: rgb(81, 150, 66);
+        border-radius:  0 0.5em 0.5em 0;
+        height: 4em;
+        width: 12em;
+        z-index: 1;
+    }
+    
+    100% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        height: 5em;
+        width: 16em;
+        z-index: 2;
+    }
+}
+
+.occupy-left {
+    animation-name: occupy-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-left {
+    0% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        height: 5em;
+        width: 16em;
+        z-index: 2;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        height: 4em;
+        width: 12em;
+        z-index: 1;
+    }
+}
+
+.shrink-to-left {
+    animation-name: shrink-to-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink-to-left {
+    0% {
+        background-color: rgb(81, 150, 66);
+        height: 4em;
+        width: 12em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
 }
