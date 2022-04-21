@@ -35,7 +35,7 @@ main {
 }
 
 .toggle-left-arrow {
-    background-color: rgb(173, 210, 124);
+    background-color: rgba(173, 210, 124, 0);
     border-radius: 0.5em 0 0 0.5em;
     height: 4em;
     margin: 0 0.25em 0 0.25em;
@@ -43,7 +43,7 @@ main {
 }
 
 .toggle-right-arrow {
-    background-color: rgb(173, 210, 124);
+    background-color: rgba(173, 210, 124, 0);
     border-radius: 0 0.5em 0.5em 0;
     height: 4em;
     margin: 0 0.25em 0 0.25em;
@@ -85,11 +85,7 @@ img {
     align-items: center;
 }
 
-.hidden-left {
-    display: none;
-}
-
-.hidden-right {
+.hidden-option-left, .hidden-option-right {
     display: none;
 }
 
@@ -109,10 +105,6 @@ img {
     width: 12em;
 }
 
-.option-left:hover, .option-right:hover {
-    background-color: rgb(101, 155, 89);
-}
-
 .option-main {
     background-color: rgb(77, 127, 66);
     border-radius: 0.5em;
@@ -122,10 +114,9 @@ img {
     z-index: 2;
 }
 
-.option-main:hover {
-    background-color: rgb(101, 155, 89);
+.option-left:hover, .option-right:hover, .option-main:hover {
+    background-color: rgb(106, 183, 165);
 }
-
 
 .no-select {
     -webkit-touch-callout: none;
@@ -157,18 +148,18 @@ footer a:hover {
     color:rgb(204, 231, 141)
 }
 
-/* Animation toggle-right */
+/* Animation Toggle Option Left */
 
-.grow-from-left {
+.grow-option-from-left {
     display: flex;
-    animation-name: grow-from-left;
+    animation-name: grow-option-from-left;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
 }
 
-@keyframes grow-from-left {
+@keyframes grow-option-from-left {
     0% {
         background-color: rgba(81, 150, 66, 0.1);
         font-size: 0em;
@@ -186,15 +177,15 @@ footer a:hover {
     }
 }
 
-.occupy-middle {
-    animation-name: occupy-middle;
+.occupy-option-middle {
+    animation-name: occupy-option-middle;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
 }
 
-@keyframes occupy-middle {
+@keyframes occupy-option-middle {
     0% {
         background-color: rgb(81, 150, 66);
         border-radius: 0.5em 0 0 0.5em;
@@ -212,15 +203,15 @@ footer a:hover {
     }
 }
 
-.occupy-right {
-    animation-name: occupy-right;
+.occupy-option-right {
+    animation-name: occupy-option-right;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 
-@keyframes occupy-right {
+@keyframes occupy-option-right {
     0% {
         background-color: rgb(77, 127, 66);
         border-radius: 0.5em;
@@ -238,15 +229,15 @@ footer a:hover {
     }
 }
 
-.shrink-to-right {
-    animation-name: shrink-to-right;
+.shrink-option-to-right {
+    animation-name: shrink-option-to-right;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 
-@keyframes shrink-to-right {
+@keyframes shrink-option-to-right {
     0% {
         background-color: rgb(81, 150, 66);
         height: 4em;
@@ -261,18 +252,18 @@ footer a:hover {
     }
 }
 
-/* Animation Toggle Left */
+/* Animation Toggle Option Right */
 
-.grow-from-right {
+.grow-option-from-right {
     display: flex;
-    animation-name: grow-from-right;
+    animation-name: grow-option-from-right;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
 }
 
-@keyframes grow-from-right {
+@keyframes grow-option-from-right {
     0% {
         background-color: rgba(81, 150, 66, 0.1);
         font-size: 0em;
@@ -290,41 +281,17 @@ footer a:hover {
     }
 }
 
-.occupy-middle {
-    animation-name: occupy-middle;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards; 
-}
+/* .occupy-option-middle is located above, this is a repeat animation */
 
-@keyframes occupy-middle {
-    0% {
-        background-color: rgb(81, 150, 66);
-        border-radius:  0 0.5em 0.5em 0;
-        height: 4em;
-        width: 12em;
-        z-index: 1;
-    }
-    
-    100% {
-        background-color: rgb(77, 127, 66);
-        border-radius: 0.5em;
-        height: 5em;
-        width: 16em;
-        z-index: 2;
-    }
-}
-
-.occupy-left {
-    animation-name: occupy-left;
+.occupy-option-left {
+    animation-name: occupy-option-left;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 
-@keyframes occupy-left {
+@keyframes occupy-option-left {
     0% {
         background-color: rgb(77, 127, 66);
         border-radius: 0.5em;
@@ -342,15 +309,15 @@ footer a:hover {
     }
 }
 
-.shrink-to-left {
-    animation-name: shrink-to-left;
+.shrink-option-to-left {
+    animation-name: shrink-option-to-left;
     animation-duration: 0.32s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards;
 }
 
-@keyframes shrink-to-left {
+@keyframes shrink-option-to-left {
     0% {
         background-color: rgb(81, 150, 66);
         height: 4em;
@@ -360,6 +327,390 @@ footer a:hover {
     100% {
         background-color: rgba(81, 150, 66, 0.1);
         font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
+}
+
+/* Time Selection CSS */
+
+#time {
+    width: 40em;
+    height: 5em;
+}
+
+#time p {
+    color: antiquewhite;
+    font-weight: 500;
+    font-size: 2em;
+    text-shadow: 0.0em 0.0em 0.25em black;
+}
+
+.invisible {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.time-main {
+    background-color: rgb(77, 127, 66);
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.25em black;
+    height: 5em;
+    width: 10em;
+    z-index: 2;
+}
+
+.time-left {
+    background-color: rgb(81, 150, 66);
+    border-radius: 0.5em 0 0 0.5em;
+    box-shadow: 0 0 0.25em black;
+    height: 4em;
+    width: 8em;
+    z-index: 1;
+}
+
+.time-right {
+    background-color: rgb(81, 150, 66);
+    border-radius: 0 0.5em 0.5em 0;
+    box-shadow: 0 0 0.25em black;
+    height: 4em;
+    width: 8em;
+    z-index: 1;
+}
+
+.time-leftmost {
+    background-color: rgb(120, 183, 106);
+    border-radius: 0.5em 0 0 0.5em;
+    box-shadow: 0 0 0.25em black;
+    height: 3.5em;
+    width: 7em;
+    z-index: 0;
+}
+
+.time-rightmost {
+    background-color: rgb(120, 183, 106);
+    border-radius: 0 0.5em 0.5em 0;
+    box-shadow: 0 0 0.25em black;
+    height: 3.5em;
+    width: 7em;
+    z-index: 0;
+}
+
+.hidden-time-left, .hidden-time-right {
+    display: none;
+}
+
+.hover-highlight:hover {
+    background-color: rgb(106, 183, 165);
+}
+
+/* Animation Toggle Time Left */
+
+.grow-time-from-left { 
+    display: flex;
+    animation-name: grow-time-from-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes grow-time-from-left {
+    0% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
+    
+    100% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+}
+
+.occupy-time-left-from-left {
+    display: flex;
+    animation-name: occupy-time-left-from-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-left-from-left {
+    0% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+}
+
+.occupy-time-middle {
+    animation-name: occupy-time-middle;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes occupy-time-middle {
+    0% {
+        background-color: rgb(81, 150, 66);
+        /* border-radius: 0.5em 0 0 0.5em;  could be removed??*/
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+    
+    100% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 5em;
+        width: 10em;
+        z-index: 2;
+    }
+}
+
+.occupy-time-right-from-middle {
+    animation-name: occupy-time-right-from-middle;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-right-from-middle {
+    0% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 5em;
+        width: 10em;
+        z-index: 2;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+}
+
+.occupy-time-rightmost-from-left {
+    animation-name: occupy-time-rightmost-from-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-rightmost-from-left {
+    0% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+    
+    100% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+}
+
+.shrink-time-to-right {
+    animation-name: shrink-time-to-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink-time-to-right {
+    0% {
+        background-color: rgb(81, 150, 66);
+        height: 3.5em;
+        width: 7em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0.25em;
+        height: 0em;
+        width: 0em;
+    }
+}
+
+/* Animation Toggle Time Right */
+
+.grow-time-from-right { 
+    display: flex;
+    animation-name: grow-time-from-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards; 
+}
+
+@keyframes grow-time-from-right {
+    0% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0em;
+        height: 0em;
+        width: 0em;
+    }
+    
+    100% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+}
+
+.occupy-time-right-from-right {
+    display: flex;
+    animation-name: occupy-time-right-from-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-right-from-right {
+    0% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        font-size: 1em;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0 0.5em 0.5em 0;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+}
+
+.occupy-time-left-from-middle {
+    animation-name: occupy-time-left-from-middle;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-left-from-middle {
+    0% {
+        background-color: rgb(77, 127, 66);
+        border-radius: 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 5em;
+        width: 10em;
+        z-index: 2;
+    }
+    
+    100% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+}
+
+.occupy-time-leftmost-from-right {
+    animation-name: occupy-time-leftmost-from-right;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes occupy-time-leftmost-from-right {
+    0% {
+        background-color: rgb(81, 150, 66);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 4em;
+        width: 8em;
+        z-index: 1;
+    }
+    
+    100% {
+        background-color: rgb(120, 183, 106);
+        border-radius: 0.5em 0 0 0.5em;
+        box-shadow: 0 0 0.25em black;
+        height: 3.5em;
+        width: 7em;
+        z-index: 0;
+    }
+}
+
+.shrink-time-to-left {
+    animation-name: shrink-time-to-left;
+    animation-duration: 0.32s;
+    animation-delay: 0s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes shrink-time-to-left {
+    0% {
+        background-color: rgb(81, 150, 66);
+        height: 3.5em;
+        width: 7em;
+    }
+    
+    100% {
+        background-color: rgba(81, 150, 66, 0.1);
+        font-size: 0.25em;
         height: 0em;
         width: 0em;
     }
