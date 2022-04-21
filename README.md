@@ -14,7 +14,7 @@ Instructions:
     User interface self exlpantory. 
         1. Use buttons to scroll through recent tasks.
         2. Select recent task.
-    ![taskTracker_2022Apr11](https://user-images.githubusercontent.com/63758275/162778411-ea46c664-9ef2-439c-94f7-454d4f0cb3cc.png)
+    ![scroll-options implement 2022Apr15](https://user-images.githubusercontent.com/63758275/163633850-6c19b690-c8cd-48f0-8209-ea85d04d2327.gif)
 
 
 Credits:
