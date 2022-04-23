@@ -4,8 +4,8 @@
     //Toggle Functions
         //ToggleOptionRight
         //ToggleOptionLeft
-        //ToggleTimeRight                       (00 00 UNDER CONSTRUCTION 00 00)
-        //ToggleTimeLeft                        (00 00 UNDER CONSTRUCTION 00 00)
+        //ToggleTimeUp
+        //ToggleTimeDown
     //Toggle Support Functions
         //Toggle Stage
             //Advance Stage
@@ -28,39 +28,129 @@ $( document ).ready(function() {
 document.onkeydown = checkKey;
 function checkKey(e) {
 
-    //Check Stage
-
     //Listen for Which Key
     e = e || window.event;
     if (e.keyCode == '38') {
-        // up arrow
+        //up arrow
+        if(currentSlot == 1) toggleTimeUp('#hours_tens');
+        if(currentSlot == 2) toggleTimeUp('#hours_ones');
+        if(currentSlot == 3) toggleTimeUp('#minutes_tens');
+        if(currentSlot == 4) toggleTimeUp('#minutes_ones');
+        if(currentSlot == 5) toggleTimeUp('#seconds_tens');
+        if(currentSlot == 6) toggleTimeUp('#seconds_ones');
     }
     else if (e.keyCode == '40') {
         // down arrow
+        if(currentSlot == 1) toggleTimeDown('#hours_tens');
+        if(currentSlot == 2) toggleTimeDown('#hours_ones');
+        if(currentSlot == 3) toggleTimeDown('#minutes_tens');
+        if(currentSlot == 4) toggleTimeDown('#minutes_ones');
+        if(currentSlot == 5) toggleTimeDown('#seconds_tens');
+        if(currentSlot == 6) toggleTimeDown('#seconds_ones');
     }
     else if (e.keyCode == '37') {
        // left arrow
-       if(stage == 'taskOptions')toggleOptionLeft();
-       if(stage == 'taskTime')toggleTimeLeft();
+       toggleOptionLeft();
     }
     else if (e.keyCode == '39') {
        // right arrow
-       if(stage =='taskOptions') toggleOptionRight();
-       if(stage == 'taskTime') toggleTimeRight();
+       toggleOptionRight();
     }
 }
 
 $('.toggle-right-arrow').click(function () {
-    if(stage =='taskOptions') toggleOptionRight();
-    if(stage == 'taskTime') toggleTimeRight();
+    toggleOptionRight();
 });
 $('.toggle-left-arrow').click(function() {
-    if(stage == 'taskOptions')toggleOptionLeft();
-    if(stage == 'taskTime')toggleTimeLeft();
+    toggleOptionLeft();
 });
 
+    //Differentiate for digit place
+$('#hours_tens .up-arrow').click(function() {
+    console.log('hours_tens place toggled')
+    toggleTimeUp('#hours_tens');
+});
+$('#hours_ones .up-arrow').click(function() {
+    console.log('hours_ones place toggled')
+    toggleTimeUp('#hours_ones');
+});
+$('#minutes_tens .up-arrow').click(function() {
+    console.log('minutes_tens place toggled')
+    toggleTimeUp('#minutes_tens');
+});
+$('#minutes_ones .up-arrow').click(function() {
+    console.log('minutes_ones place toggled')
+    toggleTimeUp('#minutes_ones');
+});
+$('#seconds_tens .up-arrow').click(function() {
+    console.log('seconds_tens place toggled')
+    toggleTimeUp('#seconds_tens');
+});
+$('#seconds_ones .up-arrow').click(function() {
+    console.log('seconds_ones place toggled')
+    toggleTimeUp('#seconds_ones');
+});
+$('#hours_tens .down-arrow').click(function() {
+    console.log('hours_tens place toggled');
+    toggleTimeDown('#hours_tens');
+});
+$('#hours_ones .down-arrow').click(function() {
+    console.log('hours_ones place toggled');
+    toggleTimeDown('#hours_ones');
+});
+$('#minutes_tens .down-arrow').click(function() {
+    console.log('minutes_tens place toggled');
+    toggleTimeDown('#minutes_tens');
+});
+$('#minutes_ones .down-arrow').click(function() {
+    console.log('minutes_ones place toggled');
+    toggleTimeDown('#minutes_ones');
+});
+$('#seconds_tens .down-arrow').click(function() {
+    console.log('seconds_tens place toggled');
+    toggleTimeDown('#seconds_tens');
+});
+$('#seconds_ones .down-arrow').click(function() {
+    console.log('seconds_ones place toggled');
+    toggleTimeDown('#seconds_ones');
+});
+
+let currentSlot = 0;
+
+function adjustSlot() {
+    $('#hours_tens .digit').focus(function() {
+        currentSlot = 1;
+        console.log('currentSlot:', currentSlot)
+    });
+    $('#hours_ones .digit').focus(function() {
+        currentSlot = 2;
+        console.log('currentSlot:', currentSlot)
+    });
+    $('#minutes_tens .digit').focus(function() {
+        currentSlot = 3;
+        console.log('currentSlot:', currentSlot)
+    });
+    $('#minutes_ones .digit').focus(function() {
+        currentSlot = 4;
+        console.log('currentSlot:', currentSlot)
+    });
+    $('#seconds_tens .digit').focus(function() {
+        currentSlot = 5;
+        console.log('currentSlot:', currentSlot)
+    });
+    $('#seconds_ones .digit').focus(function() {
+        currentSlot = 6;
+        console.log('currentSlot:', currentSlot)
+    });
+}
+adjustSlot();
+
 //Toggle Functions
+let functionLock = false; //has global scope
+
 function toggleOptionLeft() {
+    if(functionLock == true) return undefined;
+    functionLock = true;
     console.log('initiated toggleOptionLeft()')
     
     //Animation Portion
@@ -73,10 +163,13 @@ function toggleOptionLeft() {
     setTimeout(function() {
         clearOptions();
         $('#options').append(resetOptions(optionMain, myOptions, 'left'));
+        functionLock = false;
     }, 320);
 }
 
 function toggleOptionRight() {
+    if(functionLock == true) return undefined;
+    functionLock = true;
     console.log('initiated toggleOptionRight()')
     
     //Animation Portion
@@ -89,55 +182,152 @@ function toggleOptionRight() {
     setTimeout(function() {        
         clearOptions();
         $('#options').append(resetOptions(optionMain, myOptions, 'right'));
+        functionLock = false;
     }, 320);
 }
 
-function toggleTimeLeft() {
-    console.log('initiated toggleTimeLeft');
+function toggleTimeUp(location) {
+    if(functionLock == true) return undefined;
+    functionLock = true;
+    console.log('toggled Time Up');
+
+    //Time Algorithm 
+    let currentTime = $(`${location} .digit`).children().text();
+    currentTime++;
+
+    if(location == '#seconds_ones' && currentTime > 9) {
+        currentTime = 0;
+        setTimeout(function() {
+            toggleTimeUp('#seconds_tens');
+        }, 160);
+    }
+    if(location == '#seconds_tens' && currentTime > 5) {
+        currentTime = 0;
+        setTimeout(function() {
+            toggleTimeUp('#minutes_ones');
+        }, 160);
+    }
+    if(location == '#minutes_ones' && currentTime > 9) {
+        currentTime = 0;
+        setTimeout(function() {
+            toggleTimeUp('#minutes_tens');
+        }, 160);
+    }
+    if(location == '#minutes_tens' && currentTime > 5) {
+        currentTime = 0;
+        setTimeout(function() {
+            toggleTimeUp('#hours_ones');
+        }, 160);
+    }    
+    if(location == '#hours_ones' && currentTime > 9) {
+        currentTime = 0;
+        setTimeout(function() {
+            toggleTimeUp('#hours_tens');
+        }, 160);
+    };
+    if(location == '#hours_tens' && currentTime > 9) {
+        currentTime = 0;  
+    };    
 
     //Animation Portion
-    $('.hidden-time-left').addClass('grow-time-from-left');
-    $('.time-leftmost').addClass('occupy-time-left-from-left');
-    $('.time-left').addClass('occupy-time-middle');
-    $('.time-main').addClass('occupy-time-right-from-middle');
-    $('.time-right').addClass('occupy-time-rightmost-from-left');
-    $('.time-rightmost').addClass('shrink-time-to-right');
-
+    $(`${location} .digit`).animate({
+        height: '0em',
+        fontSize: '0em'
+    }, 150);
+    $(`${location} .digit-spacer`).prepend(`<div class="grow-time" tabindex="${currentSlot}"><p>${currentTime}<p></div>`);
+    
     //Restructuring DOM
-    setTimeout(function() {        
-        clearTimes();
-        $('#time').append(resetTimes(timeMain, 'left'));
-    }, 320);
+    setTimeout(function() {
+        $(`${location} .digit`).remove();
+        $(`${location} .grow-time`).addClass('digit');
+        $(`${location} .digit`).removeClass('grow-time');
+        $(`${location} .digit`).children().last().remove();
+        adjustSlot();
+        $(`${location} .digit`).focus();
+        functionLock = false;
+    }, 150);
 }
 
-function toggleTimeRight() {
-    console.log('initiated toggleTimeRight');
+function toggleTimeDown(location) {
+    if(functionLock == true) return undefined;
+    functionLock = true;
+    console.log('toggled Time Down') 
+    
+    //Time Algorithm 
+    let locationHead = location.split(' ')[0]
+
+    let currentTime = $(`${location} .digit`).children().text();
+    currentTime--;
+
+    if(locationHead == '#seconds_ones' && currentTime < 0) {
+        currentTime = 9;
+        setTimeout(function() {
+            toggleTimeDown('#seconds_tens');
+        }, 160);
+    }
+    if(locationHead == '#seconds_tens' && currentTime < 0) {
+        currentTime = 5;
+        setTimeout(function() {
+            toggleTimeDown('#minutes_ones');
+        }, 160);
+    }
+    if(locationHead == '#minutes_ones' && currentTime < 0) {
+        currentTime = 9;
+        setTimeout(function() {
+            toggleTimeDown('#minutes_tens');
+        }, 160);
+    }
+    if(locationHead == '#minutes_tens' && currentTime < 0) {
+        currentTime = 5;
+        setTimeout(function() {
+            toggleTimeDown('#hours_ones');
+        }, 160);
+    }    
+    if(locationHead == '#hours_ones' && currentTime < 0) {
+        currentTime = 9;
+        setTimeout(function() {
+            toggleTimeDown('#hours_tens');
+        }, 160);
+    };
+    if(locationHead == '#hours_tens' && currentTime < 0) {
+        currentTime = 9;  
+    };  
 
     //Animation Portion
-    $('.hidden-time-right').addClass('grow-time-from-right');
-    $('.time-rightmost').addClass('occupy-time-right-from-right');
-    $('.time-right').addClass('occupy-time-middle');
-    $('.time-main').addClass('occupy-time-left-from-middle');
-    $('.time-left').addClass('occupy-time-leftmost-from-right');
-    $('.time-leftmost').addClass('shrink-time-to-left');
-
+    $(`${location} .digit`).animate({
+        height: '0em',
+        fontSize: '0em',
+    }, 150);
+    $(`${location} .digit-spacer`).append(`<div class="grow-time" tabindex="${currentSlot}"><p>${currentTime}<p></div>`);
+    
     //Restructuring DOM
-    setTimeout(function() {        
-        clearTimes();
-        $('#time').append(resetTimes(timeMain, 'right'));
-    }, 320);
+    setTimeout(function() {
+        $(`${location} .digit`).remove();
+        $(`${location} .grow-time`).addClass('digit');
+        $(`${location} .digit`).removeClass('grow-time');
+        $(`${location} .digit`).children().last().remove();
+        adjustSlot();
+        $(`${location} .digit`).focus();
+        functionLock = false;
+    }, 150);
+
 }
+
 
 //Toggle Support Functions
     //Restructure DOM after Animation
 let stage = 'taskOptions';
+let stages = ['taskOptions', 'taskTime', 'runClock'];
 
 function advanceStage() {
     $('#options').remove();
     $('#time').removeClass('invisible');
     $('#time').addClass('flex');
+    $('.toggle-left-arrow').addClass('invisible');
+    $('.toggle-right-arrow').addClass('invisible');
     $('.prompt h1').text('How long would you like to do this for?');
-    stage = 'taskTime';
+    $('.prompt h1').css('margin-bottom', '2.5em');
+    stage = stages[1];
 }
 
 function regressStage() {
@@ -150,11 +340,11 @@ function clearOptions() {
     $('.option-main').remove();
     $('.option-right').remove();
     $('.hidden-option-right').remove();   
-    console.log('cleared Options')
+    console.log('cleared Options');
 }
 
 function resetOptions(optionInFocus, options, direction) {
-    const numOfOptions = options.length
+    const numOfOptions = options.length;
     if (numOfOptions == 0) return undefined; 
 
     optionsRepeated = [...options, ...options, ...options, ...options, ...options, ...options,...options];
@@ -165,7 +355,7 @@ function resetOptions(optionInFocus, options, direction) {
 
     optionMain = optionsRepeated[focalIndex];
 
-    console.log('options Reset')
+    console.log('options Reset');
 
     //Ready Page to Accept Time (Doesn't Belong Here)
     //Trigger swapToTime Function
@@ -190,46 +380,3 @@ function resetOptions(optionInFocus, options, direction) {
 
 let optionMain = 'A';
 let myOptions = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-
-function clearTimes() {
-    $('.hidden-time-left').remove(); 
-    $('.time-leftmost').remove();
-    $('.time-left').remove();
-    $('.time-main').remove();
-    $('.time-right').remove();
-    $('.time-rightmost').remove();
-    $('.hidden-time-right').remove();
-}
-
-function resetTimes(currentTime, direction) {
-    
-    let hoursIn = parseInt(currentTime.split(':')[0]);
-    let minutesIn = parseInt(currentTime.split(':')[1]) + (hoursIn * 60)
-    
-    if(direction == 'right') minutesIn += 1;
-    if(direction == 'left') minutesIn -= 1;
-    if(minutesIn < 3) minutesIn = 3;
-
-    function formatTime(minutes) {
-        let hoursOut = (Math.floor(minutes / 60)).toString();
-        let minutesOut = (minutes - (hoursOut * 60)).toString();
-        
-        let padHours = hoursOut.padStart(2,'0');
-        let padMinutes = minutesOut.padStart(2,'0');
-
-        return `${padHours}:${padMinutes}'`;
-    };
-
-    timeMain = formatTime(minutesIn);
-
-    return `<div class="hidden-time-left center-text"><p>${formatTime(minutesIn - 3)}</p></div>
-            <div class="time-leftmost center-text hover-highlight" tabindex="4"><p>${formatTime(minutesIn - 2)}</p></div>
-            <div class="time-left center-text hover-highlight" tabindex="5"><p>${formatTime(minutesIn - 1)}</p></div>
-            <div class="time-main center-text hover-highlight" tabindex="1"><p>${formatTime(minutesIn)}</p></div>
-            <div class="time-right center-text hover-highlight" tabindex="2"><p>${formatTime(minutesIn + 1)}</p></div>
-            <div class="time-rightmost center-text hover-highlight" tabindex="3"><p>${formatTime(minutesIn + 2)}</p></div>
-            <div class="hidden-time-right center-text"><p>${formatTime(minutesIn + 3)}</p></div>`;
-};
-
-
-let timeMain = '00:30\''

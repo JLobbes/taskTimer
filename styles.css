@@ -74,7 +74,7 @@ img {
     color: antiquewhite;
     display: inline-block;
     font-weight: 500;
-    font-size: 2em;
+    font-size: 2.5em;
     text-align: center;
     vertical-align: center;
 }
@@ -90,17 +90,17 @@ img {
 }
 
 .option-left {
-    background-color: rgb(81, 150, 66);
+    background-color: rgb(75, 137, 61);
     border-radius: 0.5em 0 0 0.5em;
-    box-shadow: 0 0 0.25em black;
+    box-shadow: 0 0 0.5em black;
     height: 4em;
     width: 12em;
 }
 
 .option-right {
-    background-color: rgb(81, 150, 66);
+    background-color: rgb(75, 137, 61);
     border-radius: 0 0.5em 0.5em 0;
-    box-shadow: 0 0 0.25em black;
+    box-shadow: 0 0 0.5em black;
     height: 4em;
     width: 12em;
 }
@@ -108,13 +108,17 @@ img {
 .option-main {
     background-color: rgb(77, 127, 66);
     border-radius: 0.5em;
-    box-shadow: 0 0 0.25em black;
+    box-shadow: 0 0 0.5em black;
     height: 5em;
     width: 16em;
     z-index: 2;
 }
 
 .option-left:hover, .option-right:hover, .option-main:hover {
+    background-color: rgb(106, 183, 165);
+}
+
+.option-left:focus, .option-right:focus, .option-main:focus {
     background-color: rgb(106, 183, 165);
 }
 
@@ -161,16 +165,16 @@ footer a:hover {
 
 @keyframes grow-option-from-left {
     0% {
-        background-color: rgba(81, 150, 66, 0.1);
+        background-color: rgba(75, 137, 61, 0.1);
         font-size: 0em;
         height: 0em;
         width: 0em;
     }
     
     100% {
-        background-color: rgba(81, 150, 66);
+        background-color: rgba(75, 137, 61);
         border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
+        box-shadow: 0 0 0.5em black;
         font-size: 1em;
         height: 4em;
         width: 12em;
@@ -187,7 +191,7 @@ footer a:hover {
 
 @keyframes occupy-option-middle {
     0% {
-        background-color: rgb(81, 150, 66);
+        background-color: rgb(75, 137, 61);
         border-radius: 0.5em 0 0 0.5em;
         height: 4em;
         width: 12em;
@@ -221,7 +225,7 @@ footer a:hover {
     }
     
     100% {
-        background-color: rgb(81, 150, 66);
+        background-color: rgb(75, 137, 61);
         border-radius: 0 0.5em 0.5em 0;
         height: 4em;
         width: 12em;
@@ -239,13 +243,13 @@ footer a:hover {
 
 @keyframes shrink-option-to-right {
     0% {
-        background-color: rgb(81, 150, 66);
+        background-color: rgb(75, 137, 61);
         height: 4em;
         width: 12em;
     }
     
     100% {
-        background-color: rgba(81, 150, 66, 0.1);
+        background-color: rgba(75, 137, 61, 0.1);
         font-size: 0.25em;
         height: 0em;
         width: 0em;
@@ -265,16 +269,16 @@ footer a:hover {
 
 @keyframes grow-option-from-right {
     0% {
-        background-color: rgba(81, 150, 66, 0.1);
+        background-color: rgba(75, 137, 61, 0.1);
         font-size: 0em;
         height: 0em;
         width: 0em;
     }
     
     100% {
-        background-color: rgba(81, 150, 66);
+        background-color: rgba(75, 137, 61);
         border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
+        box-shadow: 0 0 0.5em black;
         font-size: 1em;
         height: 4em;
         width: 12em;
@@ -301,7 +305,7 @@ footer a:hover {
     }
     
     100% {
-        background-color: rgb(81, 150, 66);
+        background-color: rgb(75, 137, 61);
         border-radius: 0.5em 0 0 0.5em;
         height: 4em;
         width: 12em;
@@ -319,13 +323,13 @@ footer a:hover {
 
 @keyframes shrink-option-to-left {
     0% {
-        background-color: rgb(81, 150, 66);
+        background-color: rgb(75, 137, 61);
         height: 4em;
         width: 12em;
     }
     
     100% {
-        background-color: rgba(81, 150, 66, 0.1);
+        background-color: rgba(75, 137, 61, 0.1);
         font-size: 0em;
         height: 0em;
         width: 0em;
@@ -342,8 +346,20 @@ footer a:hover {
 #time p {
     color: antiquewhite;
     font-weight: 500;
-    font-size: 2em;
-    text-shadow: 0.0em 0.0em 0.25em black;
+    font-size: 5.5em;
+    margin: 0 0 0 0;
+    text-shadow: 0.0em 0.0em 0.1em black;
+    text-align: center;
+}
+
+.up-arrow img, .down-arrow img {
+    height: auto;
+    width: 50px;
+    margin: 1em auto 1em auto;
+}
+
+.colon {
+    margin: 0 0;
 }
 
 .invisible {
@@ -354,364 +370,64 @@ footer a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
-.time-main {
+.digit-spacer {
+    height: 6.5em;
+    width: 5em;
+}
+
+.digit {
     background-color: rgb(77, 127, 66);
+    box-shadow: 0 0 0.6em black;
     border-radius: 0.5em;
-    box-shadow: 0 0 0.25em black;
-    height: 5em;
-    width: 10em;
-    z-index: 2;
+    width: 5em;
+    height: 6.5em;
 }
 
-.time-left {
-    background-color: rgb(81, 150, 66);
-    border-radius: 0.5em 0 0 0.5em;
-    box-shadow: 0 0 0.25em black;
-    height: 4em;
-    width: 8em;
-    z-index: 1;
-}
-
-.time-right {
-    background-color: rgb(81, 150, 66);
-    border-radius: 0 0.5em 0.5em 0;
-    box-shadow: 0 0 0.25em black;
-    height: 4em;
-    width: 8em;
-    z-index: 1;
-}
-
-.time-leftmost {
-    background-color: rgb(120, 183, 106);
-    border-radius: 0.5em 0 0 0.5em;
-    box-shadow: 0 0 0.25em black;
-    height: 3.5em;
-    width: 7em;
-    z-index: 0;
-}
-
-.time-rightmost {
-    background-color: rgb(120, 183, 106);
-    border-radius: 0 0.5em 0.5em 0;
-    box-shadow: 0 0 0.25em black;
-    height: 3.5em;
-    width: 7em;
-    z-index: 0;
-}
-
-.hidden-time-left, .hidden-time-right {
+.hidden-digit-up, .hidden-digit-down {
     display: none;
 }
 
-.hover-highlight:hover {
+.up-arrow:hover, .down-arrow:hover {
+    background-color: rgb(174, 198, 119);
+    border-radius: 0.25em;
+    margin-left: 0.5em;
+    width: 4em;
+}
+
+.digit:focus {
     background-color: rgb(106, 183, 165);
 }
 
-/* Animation Toggle Time Left */
+/* Toggle Time Up Animation */
 
-.grow-time-from-left { 
-    display: flex;
-    animation-name: grow-time-from-left;
-    animation-duration: 0.32s;
+.grow-time {
+    display: block;
+    animation-name: grow-time;
+    animation-duration: 0.2s;
     animation-delay: 0s;
     animation-timing-function: ease;
     animation-fill-mode: forwards; 
 }
 
-@keyframes grow-time-from-left {
+@keyframes grow-time {
     0% {
-        background-color: rgba(81, 150, 66, 0.1);
+        background-color: rgba(75, 137, 61, 0);
+        box-shadow: 0 0 0.25em black;
         font-size: 0em;
-        height: 0em;
-        width: 0em;
+        height: 0.5em;
+        width: 0.5em;
     }
-    
-    100% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        font-size: 1em;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-}
 
-.occupy-time-left-from-left {
-    display: flex;
-    animation-name: occupy-time-left-from-left;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-left-from-left {
-    0% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        font-size: 1em;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-    
-    100% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-}
-
-.occupy-time-middle {
-    animation-name: occupy-time-middle;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards; 
-}
-
-@keyframes occupy-time-middle {
-    0% {
-        background-color: rgb(81, 150, 66);
-        /* border-radius: 0.5em 0 0 0.5em;  could be removed??*/
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-    
     100% {
         background-color: rgb(77, 127, 66);
+        box-shadow: 0 0 0.6em black;
         border-radius: 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 5em;
-        width: 10em;
-        z-index: 2;
-    }
-}
-
-.occupy-time-right-from-middle {
-    animation-name: occupy-time-right-from-middle;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-right-from-middle {
-    0% {
-        background-color: rgb(77, 127, 66);
-        border-radius: 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 5em;
-        width: 10em;
-        z-index: 2;
-    }
-    
-    100% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-}
-
-.occupy-time-rightmost-from-left {
-    animation-name: occupy-time-rightmost-from-left;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-rightmost-from-left {
-    0% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
+        width: 5em;
+        height: 6.5em;
         z-index: 1;
     }
     
-    100% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-}
-
-.shrink-time-to-right {
-    animation-name: shrink-time-to-right;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes shrink-time-to-right {
-    0% {
-        background-color: rgb(81, 150, 66);
-        height: 3.5em;
-        width: 7em;
-    }
-    
-    100% {
-        background-color: rgba(81, 150, 66, 0.1);
-        font-size: 0.25em;
-        height: 0em;
-        width: 0em;
-    }
-}
-
-/* Animation Toggle Time Right */
-
-.grow-time-from-right { 
-    display: flex;
-    animation-name: grow-time-from-right;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards; 
-}
-
-@keyframes grow-time-from-right {
-    0% {
-        background-color: rgba(81, 150, 66, 0.1);
-        font-size: 0em;
-        height: 0em;
-        width: 0em;
-    }
-    
-    100% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        font-size: 1em;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-}
-
-.occupy-time-right-from-right {
-    display: flex;
-    animation-name: occupy-time-right-from-right;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-right-from-right {
-    0% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        font-size: 1em;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-    
-    100% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0 0.5em 0.5em 0;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-}
-
-.occupy-time-left-from-middle {
-    animation-name: occupy-time-left-from-middle;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-left-from-middle {
-    0% {
-        background-color: rgb(77, 127, 66);
-        border-radius: 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 5em;
-        width: 10em;
-        z-index: 2;
-    }
-    
-    100% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-}
-
-.occupy-time-leftmost-from-right {
-    animation-name: occupy-time-leftmost-from-right;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes occupy-time-leftmost-from-right {
-    0% {
-        background-color: rgb(81, 150, 66);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 4em;
-        width: 8em;
-        z-index: 1;
-    }
-    
-    100% {
-        background-color: rgb(120, 183, 106);
-        border-radius: 0.5em 0 0 0.5em;
-        box-shadow: 0 0 0.25em black;
-        height: 3.5em;
-        width: 7em;
-        z-index: 0;
-    }
-}
-
-.shrink-time-to-left {
-    animation-name: shrink-time-to-left;
-    animation-duration: 0.32s;
-    animation-delay: 0s;
-    animation-timing-function: ease;
-    animation-fill-mode: forwards;
-}
-
-@keyframes shrink-time-to-left {
-    0% {
-        background-color: rgb(81, 150, 66);
-        height: 3.5em;
-        width: 7em;
-    }
-    
-    100% {
-        background-color: rgba(81, 150, 66, 0.1);
-        font-size: 0.25em;
-        height: 0em;
-        width: 0em;
-    }
 }
