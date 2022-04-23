@@ -12,10 +12,12 @@ Install & Run:
 
 Instructions:
     User interface self exlpantory. 
-        1. Use buttons to scroll through recent tasks.
-        2. Select recent task.
-    ![scroll-options implement 2022Apr15](https://user-images.githubusercontent.com/63758275/163633850-6c19b690-c8cd-48f0-8209-ea85d04d2327.gif)
-
+        1. Use click-buttons or keyboard left/right to scroll through recent tasks.
+        2. Select desired task.
+    ![select-option 2022Apr22](https://user-images.githubusercontent.com/63758275/164874957-d06c85da-6773-4fc5-bf24-6c63ac25a21d.gif)
+    
+        1. Use click-buttons or tab + keyboard up/down to set time (hh:mm:ss)
+    ![set-time 2022Apr22](https://user-images.githubusercontent.com/63758275/164875123-d7d3911d-0628-40ac-b552-14584a20a583.gif)
 
 Credits:
     So far... Just me.
