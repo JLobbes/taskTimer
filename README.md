@@ -15,7 +15,6 @@ Instructions:
         1. Use click-buttons or keyboard left/right to scroll through recent tasks.
         2. Select desired task.
     ![select-option 2022Apr22](https://user-images.githubusercontent.com/63758275/164874957-d06c85da-6773-4fc5-bf24-6c63ac25a21d.gif)
-    
     Set Time User Interface:
         1. Use click-buttons or tab + keyboard up/down to set time (hh:mm:ss)
     ![set-time 2022Apr22](https://user-images.githubusercontent.com/63758275/164875546-cc8ffc2d-8e33-497f-b09e-379748fa9a1b.gif)
