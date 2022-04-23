@@ -17,7 +17,7 @@ Instructions:
     ![select-option 2022Apr22](https://user-images.githubusercontent.com/63758275/164874957-d06c85da-6773-4fc5-bf24-6c63ac25a21d.gif)
     
         1. Use click-buttons or tab + keyboard up/down to set time (hh:mm:ss)
-    ![set-time 2022Apr22](https://user-images.githubusercontent.com/63758275/164875123-d7d3911d-0628-40ac-b552-14584a20a583.gif)
+    ![set-time 2022Apr22](https://user-images.githubusercontent.com/63758275/164875316-93b1d98a-1cd7-4d5f-9797-2610402a61dd.gif)
 
 Credits:
     So far... Just me.
