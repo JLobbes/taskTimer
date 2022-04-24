@@ -1,157 +1,174 @@
 //Table of Contents
     //Make Sure jQuery is Working
-    //Event Listeners to Trigger Toggle Functions
-    //Toggle Functions
-        //ToggleOptionRight
-        //ToggleOptionLeft
-        //ToggleTimeUp
-        //ToggleTimeDown
-    //Toggle Support Functions
-        //Toggle Stage
-            //Advance Stage
-            //Regress Stage
+    //Event Listeners
+        //Listen for Keypress
+            //checkKey()
+        //Listen for Arrow Button Clicks
+            //Left & Right Option Arrow
+            //Up & Down Digit Arros
+        //Listen for Tab-Focus Location
+            //...[Nothing Here Yet]
+            //Digit Place
+                //adjustDigitPlace()
+    //Scroll Functions
+        //var functionLock
+        //scrollOptionRight()
+        //scrollOptionLeft()
+        //scrollTimeUp()
+        //scrollTimeDown()
+    //Scroll Support Functions
+        //Manipulate Stage
+            //var stage
+            //Advance Stage()
+            //Regress Stage()
         //Reset DOM after Animation
-            //clearOptions Div
-            //resetOptions Div
+            //clearOptions()
+            //resetOptions()
+            //var optionMain
 
 
 //Make Sure jQuery is Working
 $( document ).ready(function() {
     console.log('jQueary has successfully loaded')
 
+    //Refresh options on-load
     clearOptions();
     $('#options').append(resetOptions(optionMain, myOptions, 'right'));
   });
 
-//Event Listeners to Trigger Toggle Functions
-
+//Event Listeners
+    //Listen for Keypress
 document.onkeydown = checkKey;
 function checkKey(e) {
-
-    //Listen for Which Key
     e = e || window.event;
     if (e.keyCode == '38') {
         //up arrow
-        if(currentSlot == 1) toggleTimeUp('#hours_tens');
-        if(currentSlot == 2) toggleTimeUp('#hours_ones');
-        if(currentSlot == 3) toggleTimeUp('#minutes_tens');
-        if(currentSlot == 4) toggleTimeUp('#minutes_ones');
-        if(currentSlot == 5) toggleTimeUp('#seconds_tens');
-        if(currentSlot == 6) toggleTimeUp('#seconds_ones');
+        if(currentDigitPlace == 1) scrollTimeUp('#hours_tens');
+        if(currentDigitPlace == 2) scrollTimeUp('#hours_ones');
+        if(currentDigitPlace == 3) scrollTimeUp('#minutes_tens');
+        if(currentDigitPlace == 4) scrollTimeUp('#minutes_ones');
+        if(currentDigitPlace == 5) scrollTimeUp('#seconds_tens');
+        if(currentDigitPlace == 6) scrollTimeUp('#seconds_ones');
     }
     else if (e.keyCode == '40') {
         // down arrow
-        if(currentSlot == 1) toggleTimeDown('#hours_tens');
-        if(currentSlot == 2) toggleTimeDown('#hours_ones');
-        if(currentSlot == 3) toggleTimeDown('#minutes_tens');
-        if(currentSlot == 4) toggleTimeDown('#minutes_ones');
-        if(currentSlot == 5) toggleTimeDown('#seconds_tens');
-        if(currentSlot == 6) toggleTimeDown('#seconds_ones');
+        if(currentDigitPlace == 1) scrollTimeDown('#hours_tens');
+        if(currentDigitPlace == 2) scrollTimeDown('#hours_ones');
+        if(currentDigitPlace == 3) scrollTimeDown('#minutes_tens');
+        if(currentDigitPlace == 4) scrollTimeDown('#minutes_ones');
+        if(currentDigitPlace == 5) scrollTimeDown('#seconds_tens');
+        if(currentDigitPlace == 6) scrollTimeDown('#seconds_ones');
     }
     else if (e.keyCode == '37') {
        // left arrow
-       toggleOptionLeft();
+       scrollOptionLeft();
     }
     else if (e.keyCode == '39') {
        // right arrow
-       toggleOptionRight();
+       scrollOptionRight();
     }
 }
 
+//Event Listeners
+    //Listen for Arrow Button Click
+        //Left & Right Option Arrows
 $('.toggle-right-arrow').click(function () {
-    toggleOptionRight();
+    scrollOptionRight();
 });
 $('.toggle-left-arrow').click(function() {
-    toggleOptionLeft();
+    scrollOptionLeft();
 });
 
-    //Differentiate for digit place
+        //Left & Right Option Arrows
 $('#hours_tens .up-arrow').click(function() {
     console.log('hours_tens place toggled')
-    toggleTimeUp('#hours_tens');
+    scrollTimeUp('#hours_tens');
 });
 $('#hours_ones .up-arrow').click(function() {
     console.log('hours_ones place toggled')
-    toggleTimeUp('#hours_ones');
+    scrollTimeUp('#hours_ones');
 });
 $('#minutes_tens .up-arrow').click(function() {
     console.log('minutes_tens place toggled')
-    toggleTimeUp('#minutes_tens');
+    scrollTimeUp('#minutes_tens');
 });
 $('#minutes_ones .up-arrow').click(function() {
     console.log('minutes_ones place toggled')
-    toggleTimeUp('#minutes_ones');
+    scrollTimeUp('#minutes_ones');
 });
 $('#seconds_tens .up-arrow').click(function() {
     console.log('seconds_tens place toggled')
-    toggleTimeUp('#seconds_tens');
+    scrollTimeUp('#seconds_tens');
 });
 $('#seconds_ones .up-arrow').click(function() {
     console.log('seconds_ones place toggled')
-    toggleTimeUp('#seconds_ones');
+    scrollTimeUp('#seconds_ones');
 });
 $('#hours_tens .down-arrow').click(function() {
     console.log('hours_tens place toggled');
-    toggleTimeDown('#hours_tens');
+    scrollTimeDown('#hours_tens');
 });
 $('#hours_ones .down-arrow').click(function() {
     console.log('hours_ones place toggled');
-    toggleTimeDown('#hours_ones');
+    scrollTimeDown('#hours_ones');
 });
 $('#minutes_tens .down-arrow').click(function() {
     console.log('minutes_tens place toggled');
-    toggleTimeDown('#minutes_tens');
+    scrollTimeDown('#minutes_tens');
 });
 $('#minutes_ones .down-arrow').click(function() {
     console.log('minutes_ones place toggled');
-    toggleTimeDown('#minutes_ones');
+    scrollTimeDown('#minutes_ones');
 });
 $('#seconds_tens .down-arrow').click(function() {
     console.log('seconds_tens place toggled');
-    toggleTimeDown('#seconds_tens');
+    scrollTimeDown('#seconds_tens');
 });
 $('#seconds_ones .down-arrow').click(function() {
     console.log('seconds_ones place toggled');
-    toggleTimeDown('#seconds_ones');
+    scrollTimeDown('#seconds_ones');
 });
 
-let currentSlot = 0;
+//Event Listeners
+    //Listen for Tab-Focus Locations
+        //Digit Place
+let currentDigitPlace = 0;
 
-function adjustSlot() {
+function adjustDigitPlace() {
     $('#hours_tens .digit').focus(function() {
-        currentSlot = 1;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 1;
+        console.log('currentSlot:', currentDigitPlace)
     });
     $('#hours_ones .digit').focus(function() {
-        currentSlot = 2;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 2;
+        console.log('currentSlot:', currentDigitPlace)
     });
     $('#minutes_tens .digit').focus(function() {
-        currentSlot = 3;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 3;
+        console.log('currentSlot:', currentDigitPlace)
     });
     $('#minutes_ones .digit').focus(function() {
-        currentSlot = 4;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 4;
+        console.log('currentSlot:', currentDigitPlace)
     });
     $('#seconds_tens .digit').focus(function() {
-        currentSlot = 5;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 5;
+        console.log('currentSlot:', currentDigitPlace)
     });
     $('#seconds_ones .digit').focus(function() {
-        currentSlot = 6;
-        console.log('currentSlot:', currentSlot)
+        currentDigitPlace = 6;
+        console.log('currentSlot:', currentDigitPlace)
     });
 }
-adjustSlot();
+adjustDigitPlace();
 
-//Toggle Functions
+//Scroll Functions
 let functionLock = false; //has global scope
 
-function toggleOptionLeft() {
+function scrollOptionLeft() {
     if(functionLock == true) return undefined;
     functionLock = true;
-    console.log('initiated toggleOptionLeft()')
+    console.log('initiated scrollOptionLeft()')
     
     //Animation Portion
     $('.hidden-option-left').addClass('grow-option-from-left');
@@ -167,10 +184,10 @@ function toggleOptionLeft() {
     }, 320);
 }
 
-function toggleOptionRight() {
+function scrollOptionRight() {
     if(functionLock == true) return undefined;
     functionLock = true;
-    console.log('initiated toggleOptionRight()')
+    console.log('initiated scrollOptionRight()')
     
     //Animation Portion
     $('.hidden-option-right').addClass('grow-option-from-right');
@@ -186,43 +203,43 @@ function toggleOptionRight() {
     }, 320);
 }
 
-function toggleTimeUp(location) {
+function scrollTimeUp(location) {
     if(functionLock == true) return undefined;
     functionLock = true;
     console.log('toggled Time Up');
 
-    //Time Algorithm 
+    //Time Algorithm + Prevent False Times 
     let currentTime = $(`${location} .digit`).children().text();
     currentTime++;
 
     if(location == '#seconds_ones' && currentTime > 9) {
         currentTime = 0;
         setTimeout(function() {
-            toggleTimeUp('#seconds_tens');
+            scrollTimeUp('#seconds_tens');
         }, 160);
     }
     if(location == '#seconds_tens' && currentTime > 5) {
         currentTime = 0;
         setTimeout(function() {
-            toggleTimeUp('#minutes_ones');
+            scrollTimeUp('#minutes_ones');
         }, 160);
     }
     if(location == '#minutes_ones' && currentTime > 9) {
         currentTime = 0;
         setTimeout(function() {
-            toggleTimeUp('#minutes_tens');
+            adjustTimeUp('#minutes_tens');
         }, 160);
     }
     if(location == '#minutes_tens' && currentTime > 5) {
         currentTime = 0;
         setTimeout(function() {
-            toggleTimeUp('#hours_ones');
+            adjustTimeUp('#hours_ones');
         }, 160);
     }    
     if(location == '#hours_ones' && currentTime > 9) {
         currentTime = 0;
         setTimeout(function() {
-            toggleTimeUp('#hours_tens');
+            adjustTimeUp('#hours_tens');
         }, 160);
     };
     if(location == '#hours_tens' && currentTime > 9) {
@@ -234,7 +251,7 @@ function toggleTimeUp(location) {
         height: '0em',
         fontSize: '0em'
     }, 150);
-    $(`${location} .digit-spacer`).prepend(`<div class="grow-time" tabindex="${currentSlot}"><p>${currentTime}<p></div>`);
+    $(`${location} .digit-spacer`).prepend(`<div class="grow-time" tabindex="${currentDigitPlace}"><p>${currentTime}<p></div>`);
     
     //Restructuring DOM
     setTimeout(function() {
@@ -242,18 +259,18 @@ function toggleTimeUp(location) {
         $(`${location} .grow-time`).addClass('digit');
         $(`${location} .digit`).removeClass('grow-time');
         $(`${location} .digit`).children().last().remove();
-        adjustSlot();
+        adjustDigitPlace();
         $(`${location} .digit`).focus();
         functionLock = false;
     }, 150);
 }
 
-function toggleTimeDown(location) {
+function scrollTimeDown(location) {
     if(functionLock == true) return undefined;
     functionLock = true;
     console.log('toggled Time Down') 
     
-    //Time Algorithm 
+    //Time Algorithm + Prevent False Times
     let locationHead = location.split(' ')[0]
 
     let currentTime = $(`${location} .digit`).children().text();
@@ -262,31 +279,31 @@ function toggleTimeDown(location) {
     if(locationHead == '#seconds_ones' && currentTime < 0) {
         currentTime = 9;
         setTimeout(function() {
-            toggleTimeDown('#seconds_tens');
+            adjustTimeDown('#seconds_tens');
         }, 160);
     }
     if(locationHead == '#seconds_tens' && currentTime < 0) {
         currentTime = 5;
         setTimeout(function() {
-            toggleTimeDown('#minutes_ones');
+            adjustTimeDown('#minutes_ones');
         }, 160);
     }
     if(locationHead == '#minutes_ones' && currentTime < 0) {
         currentTime = 9;
         setTimeout(function() {
-            toggleTimeDown('#minutes_tens');
+            adjustTimeDown('#minutes_tens');
         }, 160);
     }
     if(locationHead == '#minutes_tens' && currentTime < 0) {
         currentTime = 5;
         setTimeout(function() {
-            toggleTimeDown('#hours_ones');
+            adjustTimeDown('#hours_ones');
         }, 160);
     }    
     if(locationHead == '#hours_ones' && currentTime < 0) {
         currentTime = 9;
         setTimeout(function() {
-            toggleTimeDown('#hours_tens');
+            adjustTimeDown('#hours_tens');
         }, 160);
     };
     if(locationHead == '#hours_tens' && currentTime < 0) {
@@ -298,7 +315,7 @@ function toggleTimeDown(location) {
         height: '0em',
         fontSize: '0em',
     }, 150);
-    $(`${location} .digit-spacer`).append(`<div class="grow-time" tabindex="${currentSlot}"><p>${currentTime}<p></div>`);
+    $(`${location} .digit-spacer`).append(`<div class="grow-time" tabindex="${currentDigitPlace}"><p>${currentTime}<p></div>`);
     
     //Restructuring DOM
     setTimeout(function() {
@@ -306,16 +323,15 @@ function toggleTimeDown(location) {
         $(`${location} .grow-time`).addClass('digit');
         $(`${location} .digit`).removeClass('grow-time');
         $(`${location} .digit`).children().last().remove();
-        adjustSlot();
+        adjustDigitPlace();
         $(`${location} .digit`).focus();
         functionLock = false;
     }, 150);
 
 }
 
-
-//Toggle Support Functions
-    //Restructure DOM after Animation
+//Scroll Support Functions
+    //Manipulate Stage
 let stage = 'taskOptions';
 let stages = ['taskOptions', 'taskTime', 'runClock'];
 
@@ -333,7 +349,8 @@ function advanceStage() {
 function regressStage() {
     stage = 'tastOptions'
 }
-
+//Scroll Support Functions
+    //Reset DOM after Animation
 function clearOptions() {
     $('.hidden-option-left').remove();
     $('.option-left').remove();
@@ -357,8 +374,7 @@ function resetOptions(optionInFocus, options, direction) {
 
     console.log('options Reset');
 
-    //Ready Page to Accept Time (Doesn't Belong Here)
-    //Trigger swapToTime Function
+    //Trigger advanceStage Function
     $(document).ready(function() {
         $('.option-main').click(function () {
             advanceStage();
