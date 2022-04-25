@@ -31,7 +31,7 @@ main {
     align-items: center;
     display: flex;
     flex-direction: row;
-    margin-top: 1em;
+    margin: 1em auto 1em auto;
 }
 
 .toggle-left-arrow {
@@ -428,6 +428,58 @@ footer a:hover {
         width: 5em;
         height: 6.5em;
         z-index: 1;
-    }
-    
+    }   
+}
+
+/* Clock Operations */
+
+#clock_operations {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2em 0 0 0;
+    width: 25em;
+}
+
+#clock_operations p {
+    color: antiquewhite;
+    text-align: center;
+    font-size: 2em;
+    font-weight: 700;
+    margin: 0.25em;
+    text-shadow: 0 0 0.25em black;
+}
+
+.button {
+    width: 7em;
+    height: 3.5em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 0.5em black;
+}
+
+#start {
+    background-color: rgb(67, 167, 92);
+}
+
+#start:hover, #start:focus {
+    background-color: rgb(44, 110, 61);
+    box-shadow: 0 -0.25em 0.5em black, 0 0.25em 0.5em black;
+}
+
+#pause {
+    background-color: rgb(106, 142, 183);
+}
+
+#pause:hover, #pause:focus {
+    background-color: rgb(62, 97, 136);
+    box-shadow: 0 -0.25em 0.5em black, 0 0.25em 0.5em black;
+}
+
+#end {
+    background-color: rgb(155, 81, 128);
+    width: 10em;
+}
+
+#end:hover, #end:focus {
+    background-color: rgb(116, 63, 81);
+    box-shadow: 0 -0.25em 0.5em black, 0 0.25em 0.5em black;
 }

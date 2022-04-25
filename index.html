@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- This audio element needs a home -->
+    <audio id="myAudio">
+        <source src="sounds/alarm.wav" type="audio/wav">
+    </audio>
     <div id="top_bar_wrapper"></div>
     
     <main>
@@ -131,11 +135,22 @@
                             <img src="images/down_arrow.gif" alt="">
                         </div>
                     </div>
-                    
                 </div>
-                
+
                 <div class="toggle-right-arrow no-select">
                     <img src="images/right_arrow.gif" alt="">
+                </div>
+            </div>
+
+            <div id="clock_operations" class="invisible no-select">
+                <div id="start" class="button" tabindex="7">
+                    <p>Start</p>
+                </div>
+                <div id="pause" class="button" tabindex="8">
+                    <p>Pause</p>
+                </div>
+                <div id="end" class="button" tabindex="9">
+                    <p>End Now</p>
                 </div>
             </div>
         </div>
